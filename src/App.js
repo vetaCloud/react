@@ -1,17 +1,31 @@
 import logo from "./logo.svg";
 import "./App.css";
 import { useState } from "react";
+import axios from "axios";
 
 function App() {
   const [file, setFile] = useState(null);
 
-  const uploadFile = (e) => {
+  const uploadFile = async (e) => {
     e.preventDefault();
     if (!file) {
       alert("Please select a file");
-    } else if (file.type !== "image/jpeg" || file.type !== "image/png") {
+      return;
+    } else if (file.type.split("/")[0] !== "image") {
       alert("Upload only images");
+      return;
     }
+    const formData = new FormData();
+    const config = {
+      onUploadProgress: (progressEvent) => console.log(progressEvent.loaded),
+    };
+    formData.append("file", file);
+    const data = await axios.post(
+      "http://localhost:5000/upload",
+      formData,
+      config
+    );
+    console.log(data);
   };
 
   return (
