@@ -1,23 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import { useState } from "react";
 
 function App() {
+  const [file, setFile] = useState(null);
+
+  const uploadFile = (e) => {
+    e.preventDefault();
+    if (!file) {
+      alert("Please select a file");
+    } else if (file.type !== "image/jpeg" || file.type !== "image/png") {
+      alert("Upload only images");
+    }
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App d-flex flex-column justify-content-center align-items-center">
+      <form onSubmit={uploadFile}>
+        <div className="mb-3">
+          <label htmlFor="formFile" className="form-label">
+            Default file input example
+          </label>
+          <input
+            onChange={(e) => setFile(e.target.files[0])}
+            className="form-control"
+            type="file"
+            id="formFile"
+          />
+        </div>
+        <button className="btn btn-primary">Submit</button>
+      </form>
     </div>
   );
 }
