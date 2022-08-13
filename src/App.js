@@ -11,9 +11,7 @@ function App() {
     if (!file) {
       alert("Please select a file");
       return;
-    } else if (file.type.split("/")[0] !== "image") {
-      alert("Upload only images");
-      return;
+    }
     }
     const formData = new FormData();
     const config = {
@@ -26,7 +24,7 @@ function App() {
     }
 
     const data = await axios.post(
-      "http://localhost:1200/upload", 
+      "http://localhost:1200/react", 
       { headers: headers },
       formData,
       config
