@@ -19,18 +19,18 @@ function App() {
     };
     formData.append("file", file);
     const headers = {
-      "Content-Type": "application/json",
+      "Content-Type": "multipart/form-data",
       X_API_KEY: "VTCD_PRIVATE_0968f2c2a8e42df0325042fd910e32",
       X_ROUTE_NAME: "profile-picture",
     };
 
     const data = await axios.post(
-      "http://localhost:1200/react",
+      "http://localhost/client",
       { headers: headers },
       formData,
       config
     );
-    console.log(data);
+    console.log(data.data.message);
   };
 
   return (

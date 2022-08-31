@@ -43,7 +43,7 @@ Your Private key can be found on your [dashboard](https://dashboard.vetacloud.co
     }
 
     const data = await axios.post(
-      "http://localhost:1200/react", 
+      "http://localhost:1200/client", 
       { headers: headers },
       formData,
       config
@@ -67,7 +67,7 @@ Images that are uploaded via this endpoint do not regard the values specified fo
     }
 
     const data = await axios.post(
-      "http://localhost:1200/react/image/1080/720/80", 
+      "http://localhost:1200/client/image/1080/720/80", 
       { headers: headers },
       formData,
       config
@@ -85,7 +85,7 @@ axios({
      maxContentLength: Infinity, maxBodyLength: Infinity,
      headers: {'X_API_KEY': 'VTCD_PRIVATE_884b1fccfbd0882267636854bcddf1', 'X_ROUTE_NAME': "profile-picture"},
      method: 'post',
-     url: 'https://cloud.vetacloud.com/node/video/50/50/10',
+     url: 'https://cloud.vetacloud.com/client/video/50/50/10',
      data: {
           file: req.files, raw: fs.readFileSync(req.files.file.path)
           }
@@ -109,7 +109,7 @@ To delete a file, the name of the file is required.
 axios({
      headers: {'X_API_KEY': 'VTCD_PRIVATE_2cd6793f8daa684155ceed6b2a9c01', 'X_ROUTE_NAME': "profile-picture", 'X_FILE_NAME': "IHNUBDUpl2facbgCu-BSp.png"},
      method: 'delete',
-     url: 'https://cloud.vetacloud.com/node/',
+     url: 'https://cloud.vetacloud.com/client/',
      }).then(function (response) {
      if(response.status !== error){
        console.log(response.data)
@@ -126,7 +126,7 @@ This would fetch all the files you have in a route alongside their details.
    axios({
      headers: {'X_API_KEY': 'VTCD_PRIVATE_2cd6793f8daa684155ceed6b2a9c01', 'X_ROUTE_NAME': "profile-picture"},
      method: 'get',
-     url: 'https://cloud.vetacloud.com/node/files',
+     url: 'https://cloud.vetacloud.com/client/files',
    }).then(function (response) {
      if(response.status !== error){
        console.log(response.data)
