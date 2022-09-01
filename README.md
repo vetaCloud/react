@@ -33,22 +33,20 @@ Your Private key can be found on your [dashboard](https://dashboard.vetacloud.co
 
 ```javascript
     const formData = new FormData();
-    const config = {
-      onUploadProgress: (progressEvent) => console.log(progressEvent.loaded),
-    };
     formData.append("file", file);
     const headers = {
-      'Content-Type': 'application/json',
-      'X_API_KEY': 'VTCD_PRIVATE_0968f2c2a8e42df0325042fd910e32', 'X_ROUTE_NAME': "profile-picture"
-    }
+      'Content-Type': 'application/x-www-form-urlencoded',
+      X_API_KEY: "VTCD_PRIVATE_dee91a7c05bdaf5f648ef378318aca",
+      X_ROUTE_NAME: "posts-images"
+    };
 
-    const data = await axios.post(
-      "http://localhost:1200/client", 
-      { headers: headers },
-      formData,
-      config
-    );
-    console.log(data);
+    const data = await axios({
+      method: 'post',
+      headers: headers,
+      url: "http://localhost/client/50/50/10",
+      data: formData
+    })
+    console.log(data)
 ```
 Note: Please take a look at [this](https://github.com/vetaCloud/react/blob/main/src/App.js) to understand better. The files that are uploaded via this endpoint are subject to the Route type, image optimization specified in the route and the video optimization specified 
 
@@ -57,84 +55,77 @@ Images that are uploaded via this endpoint do not regard the values specified fo
 
 ```javascript
     const formData = new FormData();
-    const config = {
-      onUploadProgress: (progressEvent) => console.log(progressEvent.loaded),
-    };
     formData.append("file", file);
     const headers = {
-      'Content-Type': 'application/json',
-      'X_API_KEY': 'VTCD_PRIVATE_0968f2c2a8e42df0325042fd910e32', 'X_ROUTE_NAME': "profile-picture"
-    }
+      'Content-Type': 'application/x-www-form-urlencoded',
+      X_API_KEY: "VTCD_PRIVATE_dee91a7c05bdaf5f648ef378318aca",
+      X_ROUTE_NAME: "posts-images"
+    };
 
-    const data = await axios.post(
-      "http://localhost:1200/client/image/1080/720/80", 
-      { headers: headers },
-      formData,
-      config
-    );
-    console.log(data);
-});
+    const data = await axios({
+      method: 'post',
+      headers: headers,
+      url: "http://localhost/client/image/50/50/10",
+      data: formData
+    })
+    console.log(data)
 ```
-The first parameter is the height of the image. The second parameter is the length of the image. The third parameter is the quality of the image. To use the default detail of the image's height, length or quality, use 0. If you specify height, you must specify length and vise versa. 
+The first parameter is the height of the image. The second parameter is the length of the image. The third parameter is the quality of the image. To use the default detail of the image's height, length or quality, use 0. If you specify height, you must specify length and vise versa. Quality could be specified alone.
 
 
 # Video upload with optimization in parameters
 Videos that are uploaded via this endpoint do not regard the values specified for video optimization in the route although there could be file rejection if the file uploaded is not a video. The image formats we support at the moment include; .mp4 .mov .wmv .avi .flv .mkv .webm .mpeg-2
 ```javascript
-axios({
-     maxContentLength: Infinity, maxBodyLength: Infinity,
-     headers: {'X_API_KEY': 'VTCD_PRIVATE_884b1fccfbd0882267636854bcddf1', 'X_ROUTE_NAME': "profile-picture"},
-     method: 'post',
-     url: 'https://cloud.vetacloud.com/client/video/50/50/10',
-     data: {
-          file: req.files, raw: fs.readFileSync(req.files.file.path)
-          }
-     }).then(function (response) {
-     if(response.status !== "error"){
-      console.log(response.data)
-     }
-     else{
-      console.log(response.data)
-     }
-     fs.unlinkSync(req.files.file.path)
-});
+    const formData = new FormData();
+    formData.append("file", file);
+    const headers = {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      X_API_KEY: "VTCD_PRIVATE_dee91a7c05bdaf5f648ef378318aca",
+      X_ROUTE_NAME: "posts-images"
+    };
+
+    const data = await axios({
+      method: 'post',
+      headers: headers,
+      url: "http://localhost/client/video/50/50/10",
+      data: formData
+    })
+    console.log(data)
   ```
-The first parameter is the height of the video. The second parameter is the length of the video. The third parameter is the quality of the video. To use the default detail of the video's height, length or quality, use 0. If you specify height, you must specify length and vise versa. 
+The first parameter is the height of the video. The second parameter is the length of the video. The third parameter is the quality of the video. To use the default detail of the video's height, length or quality, use 0. If you specify height, you must specify length and vise versa. If you specify length, width and quality, only the first two would be regarded
 
 # Delete file
 
 To delete a file, the name of the file is required.
 
 ```javascript
-axios({
-     headers: {'X_API_KEY': 'VTCD_PRIVATE_2cd6793f8daa684155ceed6b2a9c01', 'X_ROUTE_NAME': "profile-picture", 'X_FILE_NAME': "IHNUBDUpl2facbgCu-BSp.png"},
-     method: 'delete',
-     url: 'https://cloud.vetacloud.com/client/',
-     }).then(function (response) {
-     if(response.status !== error){
-       console.log(response.data)
-     }
-     else{
-       console.log(response.data)
-     }
-});
+ headers: {'X_API_KEY': 'VTCD_PRIVATE_2cd6793f8daa684155ceed6b2a9c01', 
+ 'X_ROUTE_NAME': "profile-picture", 
+ 'X_FILE_NAME': "IHNUBDUpl2facbgCu-BSp.png"},
+
+const data = await axios({
+  method: 'delete',
+  headers: headers,
+  url: "http://localhost/client/",
+  data: formData
+})
+console.log(data)
+
 ```
 
 # Fetch all files in a route 
 This would fetch all the files you have in a route alongside their details.
 ```javascript
-   axios({
-     headers: {'X_API_KEY': 'VTCD_PRIVATE_2cd6793f8daa684155ceed6b2a9c01', 'X_ROUTE_NAME': "profile-picture"},
-     method: 'get',
-     url: 'https://cloud.vetacloud.com/client/files',
-   }).then(function (response) {
-     if(response.status !== error){
-       console.log(response.data)
-     }
-     else{
-       console.log(response.data)
-     }
-   });
+headers: {'X_API_KEY': 'VTCD_PRIVATE_2cd6793f8daa684155ceed6b2a9c01', 'X_ROUTE_NAME': "profile-picture"},
+
+const data = await axios({
+  method: 'get',
+  headers: headers,
+  url: 'https://cloud.vetacloud.com/client/files',
+  data: formData
+})
+console.log(data)
+
 ```
 
 # Webhook

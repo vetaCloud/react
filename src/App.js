@@ -18,20 +18,22 @@ function App() {
       onUploadProgress: (progressEvent) => console.log(progressEvent.loaded),
     };
     formData.append("file", file);
+
     const headers = {
-      "Content-Type": "multipart/form-data",
-      X_API_KEY: "VTCD_PRIVATE_0968f2c2a8e42df0325042fd910e32",
-      X_ROUTE_NAME: "profile-picture",
+      'Content-Type': 'application/x-www-form-urlencoded',
+      X_API_KEY: "VTCD_PRIVATE_dee91a7c05bdaf5f648ef378318aca",
+      X_ROUTE_NAME: "posts-images"
     };
 
-    const data = await axios.post(
-      "http://localhost/client",
-      { headers: headers },
-      formData,
-      config
-    );
-    console.log(data.data.message);
-  };
+    const data = await axios({
+      method: 'post',
+      headers: headers,
+      url: "http://localhost/client/image/50/50/10",
+      data: formData
+    })
+    console.log(data)
+  }
+
 
   return (
     <div className="App d-flex flex-column justify-content-center align-items-center">
