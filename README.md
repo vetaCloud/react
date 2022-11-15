@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://beta-dashboard.vetacloud.com/assets/vC-png-2.a21a37aa.png"></img>
+<img src="https://dashboard.vetacloud.com/assets/vC-png-2.a21a37aa.png"></img>
 </p>
 
 # vetaCloud v0.1 React Integration 
