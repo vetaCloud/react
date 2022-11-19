@@ -43,7 +43,7 @@ Your Private key can be found on your [dashboard](https://dashboard.vetacloud.co
     const data = await axios({
       method: 'post',
       headers: headers,
-      url: "http://localhost/client/50/50/10",
+      url: "https://cloud.vetacloud.com/client/50/50/10",
       data: formData
     })
     console.log(data)
@@ -65,7 +65,7 @@ Images that are uploaded via this endpoint do not regard the values specified fo
     const data = await axios({
       method: 'post',
       headers: headers,
-      url: "http://localhost/client/image/50/50/10",
+      url: "https://cloud.vetacloud.com/client/image/50/50/10",
       data: formData
     })
     console.log(data)
@@ -87,7 +87,7 @@ Videos that are uploaded via this endpoint do not regard the values specified fo
     const data = await axios({
       method: 'post',
       headers: headers,
-      url: "http://localhost/client/video/50/50/10",
+      url: "https://cloud.vetacloud.com/client/video/50/50/10",
       data: formData
     })
     console.log(data)
@@ -106,7 +106,7 @@ To delete a file, the name of the file is required.
 const data = await axios({
   method: 'delete',
   headers: headers,
-  url: "http://localhost/client/",
+  url: "https://cloud.vetacloud.com/client/",
   data: formData
 })
 console.log(data)
