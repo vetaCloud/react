@@ -28,7 +28,7 @@ function App() {
     const data = await axios({
       method: 'post',
       headers: headers,
-      url: "http://localhost/client/image/50/50/10",
+      url: "https://cloud.vetacloud.com/client/image/50/50/10",
       data: formData
     })
     console.log(data)
