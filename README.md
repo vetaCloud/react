@@ -25,6 +25,8 @@ Your Private Key would be needed for the next process. You can get it [here](htt
 6. Webhook
 7. Extra 
 
+Route: Route is the directory that you will be uploading your file to.
+
 <br>
 
 # Basic upload
