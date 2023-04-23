@@ -138,7 +138,8 @@ QR Route is generated for all users but the code is generated for only Advanced 
 
 ```javascript
 {
-  status: 'success',
+  status: 200,
+  success: true,
   message: 'Successfully Uploaded',
   file: {
     name: 'QeXhRhba3OVD2ZeLwguUW.jpg',
@@ -154,14 +155,15 @@ QR Route is generated for all users but the code is generated for only Advanced 
  There are so many types of errors that could be returned if a file isnt successfully uploaded but below is an example.
  
  ```javascript
- { status: 'error', message: 'File too large' }
+ { status: 400, success: false, message: 'File too large' }
  ```
  
  ```Successful file delete```
  Here is the response y'll get if a file has been successfully deleted 
   ```javascript
  {
-  status: 'success',
+  status: 200,
+  success: true,
   message: 'File successfully deleted'
 }
  ```
@@ -170,7 +172,8 @@ QR Route is generated for all users but the code is generated for only Advanced 
   When a file is not successfully deleted, the issue is mostly that the delete request has been made before, the file doesn't exist or the file name is wrong.
    ```javascript 
  {
-  status: 'error',
+  status: 400,
+  success: false,
   message: 'File not found. Please check your private key and file name to make sure they are correct'
 }
   ```
@@ -178,7 +181,8 @@ QR Route is generated for all users but the code is generated for only Advanced 
 
  ```javascript 
 {
-  status: 'success',
+  status: 200,
+  success: true,
   message: [
     {
       name: 'bu6W9WN5FTceSgufxZ7c5.jpg',
