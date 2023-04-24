@@ -26,7 +26,7 @@ Your Private Key would be needed for the next process. You can get it [here](htt
 7. Extra 
 
 <br>
-Route: Route is the directory that you will be uploading your file to.
+Note: Before you can upload your files, you need to create a Route. Route is the directory that you will be uploading your files to. Click [here](https://dashboard.vetacloud.com/add-route) to create one.
 
 # Basic upload
 
