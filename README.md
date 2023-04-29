@@ -138,7 +138,7 @@ QR Route is generated for all users but the code is generated for only Advanced 
 
 ```javascript
 {
-  status: 200,
+  status: 201,
   success: true,
   message: 'Successfully Uploaded',
   file: {
@@ -162,7 +162,7 @@ QR Route is generated for all users but the code is generated for only Advanced 
  Here is the response y'll get if a file has been successfully deleted 
   ```javascript
  {
-  status: 200,
+  status: 204,
   success: true,
   message: 'File successfully deleted'
 }
@@ -172,7 +172,7 @@ QR Route is generated for all users but the code is generated for only Advanced 
   When a file is not successfully deleted, the issue is mostly that the delete request has been made before, the file doesn't exist or the file name is wrong.
    ```javascript 
  {
-  status: 400,
+  status: 404,
   success: false,
   message: 'File not found. Please check your private key and file name to make sure they are correct'
 }
